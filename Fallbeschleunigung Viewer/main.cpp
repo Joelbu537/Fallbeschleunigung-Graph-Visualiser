@@ -10,8 +10,8 @@ sf::Vertex* fillDecoX(float graphMargin, float xInterval, float sizeY, int decoL
 	sf::Vertex* vertexArray = new sf::Vertex[18];
     for (int i = 0; i < 9; i++)
     {
-        vertexArray[i * 2 + 0] = sf::Vertex{{ graphMargin + xInterval * (i + 1), sizeY - graphMargin - decoLength }, sf::Color::White, { 0.f, 0.f }};
-        vertexArray[i * 2 + 1] = sf::Vertex{{ graphMargin + xInterval * (i + 1), sizeY - graphMargin + decoLength }, sf::Color::White, { 0.f, 0.f }};
+        vertexArray[i * 2 + 0] = sf::Vertex{ { graphMargin + xInterval * (i + 1), sizeY - graphMargin - decoLength }, sf::Color::White, { 0.f, 0.f } };
+        vertexArray[i * 2 + 1] = sf::Vertex{ { graphMargin + xInterval * (i + 1), sizeY - graphMargin + decoLength }, sf::Color::White, { 0.f, 0.f } };
     }
 	return vertexArray;
 }
@@ -19,7 +19,7 @@ sf::Vertex* fillDecoY(float graphMargin, float yInterval, float sizeY, int decoL
     sf::Vertex* vertexArray = new sf::Vertex[18];
     for (int i = 0; i < 9; i++)
     {
-        vertexArray[i * 2 + 0] = sf::Vertex{ { graphMargin - decoLength, graphMargin + yInterval * (i + 1)}, sf::Color::White, {0.f, 0.f}};
+        vertexArray[i * 2 + 0] = sf::Vertex{ { graphMargin - decoLength, graphMargin + yInterval * (i + 1)}, sf::Color::White, { 0.f, 0.f } };
         vertexArray[i * 2 + 1] = sf::Vertex{ { graphMargin + decoLength, graphMargin + yInterval * (i + 1)}, sf::Color::White, { 0.f, 0.f } };
     }
     return vertexArray;
@@ -39,19 +39,19 @@ int main(int argc, char* argv[])
 	constexpr int decoLength = 20;
     sf::Vertex lineX[] =
     {
-        {{ graphMargin - graphMargin / 3, size.y - graphMargin }, sf::Color::White, { 0.f,  0.f }},
-        {{ size.x - graphMargin,   size.y - graphMargin}, sf::Color::White, { 0.f,  0.f }},
-        {{ size.x - graphMargin - arrowSize * 2, size.y - graphMargin - arrowSize}, sf::Color::White, { 0.f, 0.f }},
-		{{ size.x - graphMargin - arrowSize * 2, size.y - graphMargin + arrowSize}, sf::Color::White, { 0.f, 0.f }},
-        {{ size.x - graphMargin, size.y - graphMargin}, sf::Color::White, { 0.f,  0.f }}
+        { { graphMargin - graphMargin / 3, size.y - graphMargin }, sf::Color::White, { 0.f,  0.f } },
+        { { size.x - graphMargin,   size.y - graphMargin}, sf::Color::White, { 0.f,  0.f } },
+        { { size.x - graphMargin - arrowSize * 2, size.y - graphMargin - arrowSize}, sf::Color::White, { 0.f, 0.f } },
+		{ { size.x - graphMargin - arrowSize * 2, size.y - graphMargin + arrowSize}, sf::Color::White, { 0.f, 0.f } },
+        { { size.x - graphMargin, size.y - graphMargin}, sf::Color::White, { 0.f,  0.f } }
     };
     sf::Vertex lineY[] =
     {
-        {{ graphMargin, size.y + graphMargin / 3 - graphMargin }, sf::Color::White, { 0.0f,  0.0f }},
-        {{ graphMargin, graphMargin }, sf::Color::White, { 0.0f,  0.0f }},
-		{{ graphMargin - arrowSize, graphMargin + arrowSize * 2}, sf::Color::White, { 0.0f,  0.0f }},
-        {{ graphMargin + arrowSize, graphMargin + arrowSize * 2}, sf::Color::White, { 0.0f,  0.0f }},
-        {{ graphMargin, graphMargin }, sf::Color::White, { 0.0f,  0.0f }}
+        { { graphMargin, size.y + graphMargin / 3 - graphMargin }, sf::Color::White, { 0.0f,  0.0f } },
+        { { graphMargin, graphMargin }, sf::Color::White, { 0.0f,  0.0f } },
+		{ { graphMargin - arrowSize, graphMargin + arrowSize * 2}, sf::Color::White, { 0.0f,  0.0f } },
+        { { graphMargin + arrowSize, graphMargin + arrowSize * 2}, sf::Color::White, { 0.0f,  0.0f } },
+        { { graphMargin, graphMargin }, sf::Color::White, { 0.0f,  0.0f } }
     };
 
     xSpan = size.x - 2 * graphMargin;
