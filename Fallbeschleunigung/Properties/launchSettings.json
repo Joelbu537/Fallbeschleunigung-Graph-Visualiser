@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Fallbeschleunigung": {
+      "commandName": "Project"
+    },
+    "Fallbeschleunigung Viewer Debug": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\jork-\\source\\repos\\Fallbeschleunigung\\x64\\Debug\\Fallbeschleunigung Viewer.exe"
+    },
+    "Fallbeschleunigung Viewer Release": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\jork-\\source\\repos\\Fallbeschleunigung\\x64\\Release\\Fallbeschleunigung Viewer.exe"
+    }
+  }
+}
