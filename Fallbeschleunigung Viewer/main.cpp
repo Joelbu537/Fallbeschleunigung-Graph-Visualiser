@@ -31,7 +31,6 @@ int main(int argc, char* argv[])
 	sf::RenderWindow window(desktop, "Fallbeschleunigung", sf::Style::None);
     window.setVerticalSyncEnabled(true);
 
-    sf::Clock clock;
     sf::Vector2u size = window.getSize();
     std::cout << "Size X: " << size.x << std::endl << "Size Y: " << size.y << std::endl;
 
