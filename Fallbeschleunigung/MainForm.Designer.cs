@@ -161,7 +161,7 @@
             MaximizeBox = false;
             Name = "MainForm";
             ShowIcon = false;
-            Text = "Fallbeschleunigung Kontrolle";
+            Text = "Fallrechner";
             tableLayoutPanel.ResumeLayout(false);
             tableLayoutPanel.PerformLayout();
             ResumeLayout(false);
