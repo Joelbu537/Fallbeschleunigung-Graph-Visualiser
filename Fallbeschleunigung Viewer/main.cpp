@@ -3,8 +3,8 @@
 #include <cmath>
 #include <iostream>
 
-float xSpan = 0.f;
-float ySpan = 0.f;
+int xSpan = 0;
+int ySpan = 0;
 
 sf::Vertex* fillDecoX(float graphMargin, float xInterval, float sizeY, int decoLength) {
 	sf::Vertex* vertexArray = new sf::Vertex[18];
@@ -29,8 +29,9 @@ int main(int argc, char* argv[])
 {
     for (int i = 0; i < argc; i++)
     {
-		std::cout << "Argument " << i << ": " << argv[i] << std::endl;
+		std::cout << argv[i] << ' ';
     }
+    std::cout << std::endl;
     if (argc != 5) {
         std::cout << "Ungültige Parameteranzahl!" << std::endl;
         return -1;
@@ -83,11 +84,48 @@ int main(int argc, char* argv[])
 	float gravity = std::stof(argv[4]);
 	std::cout << "Intervall: " << interval << ", Hoehe: " << height << ", Anfangsgeschwindigkeit: " << velocity << ", Fallbeschleunigung: " << gravity << std::endl;
 
-    for (int i = 0; i < xSpan; i++)
+    std::vector<int> dataY(xSpan);
+
+	dataY[0] = height;
+    std::cout << "0 Y: " << height << std::endl;
+
+    for (int i = 1; i < xSpan; i++)
     {
-	    
+		velocity += gravity * interval;
+		height += velocity * interval;
+        dataY[i] = height;
+		std::cout << i * interval << " Y: " << height << std::endl;
     }
 
+    float min = 0;
+    float max = 0;
+    if (dataY[0] > dataY[xSpan - 1])
+    {
+		max = dataY[0];
+        min = dataY[xSpan - 1];
+    }
+    else{
+		min = dataY[0];
+		max = dataY[xSpan - 1];
+    }
+	std::cout << std::endl << "Min: " << min << ", Max: " << max << std::endl;
+
+	std::vector<sf::Vertex> graphVertices(xSpan);
+
+    float diff = max - min;
+
+    for (int i = 0; i < xSpan - 1; i++)
+    {
+        graphVertices[i] = sf::Vertex{ { 
+
+        	graphMargin + i,
+        	graphMargin + ySpan - (dataY[i] / diff)},
+
+        	sf::Color::Blue, 
+        	{ 0.f, 0.f } };
+
+		std::cout << "Graph Vertex " << i << ": (" << graphVertices[i].position.x << ", " << graphVertices[i].position.y << ")" << std::endl;
+    }
 
     while (window.isOpen())
     {
@@ -102,14 +140,14 @@ int main(int argc, char* argv[])
                 if (key->scancode == sf::Keyboard::Scancode::Escape)
                     window.close();
             }
-
         }
         window.clear();
         
+        window.draw(graphVertices.data(), xSpan, sf::PrimitiveType::LineStrip);
+        window.draw(lineXdeco, 18, sf::PrimitiveType::Lines);
+        window.draw(lineYdeco, 18, sf::PrimitiveType::Lines);
 		window.draw(lineX, 5, sf::PrimitiveType::LineStrip);
 		window.draw(lineY, 5, sf::PrimitiveType::LineStrip);
-		window.draw(lineXdeco, 18, sf::PrimitiveType::Lines);
-		window.draw(lineYdeco, 18, sf::PrimitiveType::Lines);
 
         window.display();
     }

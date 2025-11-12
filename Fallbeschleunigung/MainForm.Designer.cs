@@ -127,7 +127,7 @@
             textBoxInterval.Name = "textBoxInterval";
             textBoxInterval.Size = new Size(225, 47);
             textBoxInterval.TabIndex = 0;
-            textBoxInterval.Text = "1";
+            textBoxInterval.Text = "1,0";
             // 
             // labelInterval
             // 
