@@ -44,6 +44,7 @@ int main(int argc, char* argv[])
     std::cout << "Size X: " << size.x << std::endl << "Size Y: " << size.y << std::endl;
 
 	float graphMargin = std::round(size.x / 50.f / 10) * 10; // Runden um Kommazahlen für die Größe der Fläche im Graphen zu vermeiden
+	std::cout << "Graph Margin: " << graphMargin << std::endl;
 	constexpr int arrowSize = 20;
 	constexpr int decoLength = 20;
     sf::Vertex lineX[] =
@@ -84,7 +85,7 @@ int main(int argc, char* argv[])
 	float gravity = std::stof(argv[4]);
 	std::cout << "Intervall: " << interval << ", Hoehe: " << height << ", Anfangsgeschwindigkeit: " << velocity << ", Fallbeschleunigung: " << gravity << std::endl;
 
-    std::vector<int> dataY(xSpan);
+    std::vector<float> dataY(xSpan);
 
 	dataY[0] = height;
     std::cout << "0 Y: " << height << std::endl;
@@ -108,11 +109,13 @@ int main(int argc, char* argv[])
 		min = dataY[0];
 		max = dataY[xSpan - 1];
     }
-	std::cout << std::endl << "Min: " << min << ", Max: " << max << std::endl;
 
 	std::vector<sf::Vertex> graphVertices(xSpan);
 
     float diff = max - min;
+
+    std::cout << "xSpan: " << xSpan << std::endl << "ySpan: " << ySpan << std::endl;
+    std::cout << std::endl << "Min: " << min << ", Max: " << max << ", Diff: " << diff << std::endl;
 
     for (int i = 0; i < xSpan - 1; i++)
     {
@@ -124,7 +127,7 @@ int main(int argc, char* argv[])
         	sf::Color::Blue, 
         	{ 0.f, 0.f } };
 
-		std::cout << "Graph Vertex " << i << ": (" << graphVertices[i].position.x << ", " << graphVertices[i].position.y << ")" << std::endl;
+		std::cout << "Graph Vertex " << i << ": Value: " << dataY[i] << "(" << graphVertices[i].position.x << ", " << graphVertices[i].position.y << ")" << std::endl;
     }
 
     while (window.isOpen())
@@ -144,6 +147,7 @@ int main(int argc, char* argv[])
         window.clear();
         
         window.draw(graphVertices.data(), xSpan, sf::PrimitiveType::LineStrip);
+        window.display();
         window.draw(lineXdeco, 18, sf::PrimitiveType::Lines);
         window.draw(lineYdeco, 18, sf::PrimitiveType::Lines);
 		window.draw(lineX, 5, sf::PrimitiveType::LineStrip);

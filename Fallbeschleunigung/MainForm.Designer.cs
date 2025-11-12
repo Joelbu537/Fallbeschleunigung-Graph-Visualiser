@@ -73,7 +73,7 @@
             textBoxAcceleration.Name = "textBoxAcceleration";
             textBoxAcceleration.Size = new Size(225, 47);
             textBoxAcceleration.TabIndex = 7;
-            textBoxAcceleration.Text = "9,81";
+            textBoxAcceleration.Text = "-9,81";
             // 
             // labelAcceleration
             // 
