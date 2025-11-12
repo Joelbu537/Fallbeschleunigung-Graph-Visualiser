@@ -109,7 +109,7 @@
             textBoxHeight.Name = "textBoxHeight";
             textBoxHeight.Size = new Size(225, 47);
             textBoxHeight.TabIndex = 3;
-            textBoxHeight.Text = "25";
+            textBoxHeight.Text = "100";
             // 
             // labelHeight
             // 
@@ -127,7 +127,7 @@
             textBoxInterval.Name = "textBoxInterval";
             textBoxInterval.Size = new Size(225, 47);
             textBoxInterval.TabIndex = 0;
-            textBoxInterval.Text = "1,0";
+            textBoxInterval.Text = "0,1";
             // 
             // labelInterval
             // 

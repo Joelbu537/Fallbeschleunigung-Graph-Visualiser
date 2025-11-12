@@ -38,7 +38,6 @@ namespace Fallbeschleunigung
             p.StartInfo.Arguments = string.Format(CultureInfo.InvariantCulture,
                 "{0} {1} {2} {3}",
                 interval, height, velocity, acceleration);
-            File.WriteAllText("debug.txt", "Args: " + p.StartInfo.Arguments);
             p.Start();
         }
     }

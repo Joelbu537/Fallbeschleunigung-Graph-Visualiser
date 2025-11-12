@@ -98,37 +98,46 @@ int main(int argc, char* argv[])
 		std::cout << i * interval << " Y: " << height << std::endl;
     }
 
-    float min = 0;
     float max = 0;
     if (dataY[0] > dataY[xSpan - 1])
     {
 		max = dataY[0];
-        min = dataY[xSpan - 1];
     }
     else{
-		min = dataY[0];
 		max = dataY[xSpan - 1];
     }
 
 	std::vector<sf::Vertex> graphVertices(xSpan);
 
-    float diff = max - min;
-
     std::cout << "xSpan: " << xSpan << std::endl << "ySpan: " << ySpan << std::endl;
-    std::cout << std::endl << "Min: " << min << ", Max: " << max << ", Diff: " << diff << std::endl;
+    std::cout << std::endl << ", Max: " << max << std::endl;
 
-    for (int i = 0; i < xSpan - 1; i++)
+    for (int i = 0; i < xSpan; i++)
     {
         graphVertices[i] = sf::Vertex{ { 
 
         	graphMargin + i,
-        	graphMargin + ySpan - (dataY[i] / diff)},
+        	graphMargin - (dataY[i] / max)},
 
-        	sf::Color::Blue, 
+        	sf::Color::Green, 
         	{ 0.f, 0.f } };
 
 		std::cout << "Graph Vertex " << i << ": Value: " << dataY[i] << "(" << graphVertices[i].position.x << ", " << graphVertices[i].position.y << ")" << std::endl;
     }
+
+    sf::Font font("Consolas.ttf");
+    sf::Text xText(font);
+    xText.setString(std::to_string(xSpan * interval));
+    xText.setCharacterSize(30);
+    xText.setFillColor(sf::Color::White);
+    xText.setPosition({ (float)xSpan - graphMargin * 0.5f, ySpan + (graphMargin * 1.5f) });
+
+    sf::Text yText(font);
+    yText.setString(std::to_string(max));
+    yText.setCharacterSize(30);
+    yText.setFillColor(sf::Color::White);
+    yText.setPosition({ graphMargin * 1.5f, graphMargin });
+
 
     while (window.isOpen())
     {
@@ -144,14 +153,16 @@ int main(int argc, char* argv[])
                     window.close();
             }
         }
-        window.clear();
-        
-        window.draw(graphVertices.data(), xSpan, sf::PrimitiveType::LineStrip);
-        window.display();
+
+        window.clear(sf::Color::Black);
+
         window.draw(lineXdeco, 18, sf::PrimitiveType::Lines);
         window.draw(lineYdeco, 18, sf::PrimitiveType::Lines);
 		window.draw(lineX, 5, sf::PrimitiveType::LineStrip);
 		window.draw(lineY, 5, sf::PrimitiveType::LineStrip);
+        window.draw(graphVertices.data(), xSpan, sf::PrimitiveType::LineStrip);
+        window.draw(xText);
+        window.draw(yText);
 
         window.display();
     }
