@@ -27,6 +27,14 @@ sf::Vertex* fillDecoY(float graphMargin, float yInterval, float sizeY, int decoL
 
 int main(int argc, char* argv[])
 {
+    for (int i = 0; i < argc; i++)
+    {
+		std::cout << "Argument " << i << ": " << argv[i] << std::endl;
+    }
+    if (argc != 5) {
+        std::cout << "Ungültige Parameteranzahl!" << std::endl;
+        return -1;
+    }
     sf::VideoMode desktop = sf::VideoMode::getDesktopMode();
 	sf::RenderWindow window(desktop, "Fallbeschleunigung", sf::Style::None);
     window.setVerticalSyncEnabled(true);
@@ -69,6 +77,16 @@ int main(int argc, char* argv[])
     window.draw(lineYdeco, 18, sf::PrimitiveType::Lines);
     window.display();
 
+	float interval = std::stof(argv[1]);
+	float height = std::stof(argv[2]);
+	float velocity = std::stof(argv[3]);
+	float gravity = std::stof(argv[4]);
+	std::cout << "Intervall: " << interval << ", Hoehe: " << height << ", Anfangsgeschwindigkeit: " << velocity << ", Fallbeschleunigung: " << gravity << std::endl;
+
+    for (int i = 0; i < xSpan; i++)
+    {
+	    
+    }
 
 
     while (window.isOpen())

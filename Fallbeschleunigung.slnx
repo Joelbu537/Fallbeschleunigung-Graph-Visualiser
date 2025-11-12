@@ -4,6 +4,6 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="Fallbeschleunigung Viewer/Fallbeschleunigung Viewer.vcxproj" />
+  <Project Path="Fallbeschleunigung Viewer/Fallbeschleunigung Viewer.vcxproj" Id="ec731990-6e11-47d8-acee-a9944474c59c" />
   <Project Path="Fallbeschleunigung/Fallbeschleunigung.csproj" />
 </Solution>
