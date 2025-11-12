@@ -19,4 +19,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\Fallbeschleunigung\bin\Debug\net9.0-windows\Consolas.ttf">
+      <Filter>Ressourcendateien</Filter>
+    </Font>
+  </ItemGroup>
 </Project>
